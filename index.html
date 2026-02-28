@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Akriti ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background: linear-gradient(135deg,#0f0f1a,#1a1a2e);
+  color:#fff;
+  overflow-x:hidden;
+}
+
+.container{
+  width:90%;
+  max-width:900px;
+  margin:auto;
+  padding:40px 0;
+}
+
+h1,h2{
+  font-family:'Playfair Display',serif;
+  margin-bottom:20px;
+}
+
+.section{
+  margin:60px 0;
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s;
+}
+
+.section.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.card{
+  background:rgba(255,255,255,0.05);
+  padding:25px;
+  border-radius:20px;
+  backdrop-filter:blur(10px);
+  margin-bottom:20px;
+}
+
+button{
+  padding:12px 20px;
+  border:none;
+  border-radius:20px;
+  background:#ff4d6d;
+  color:#fff;
+  cursor:pointer;
+  margin-top:15px;
+}
+
+/* popup */
+.popup{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:#000;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:1000;
+}
+
+.popup h1{
+  font-size:28px;
+  text-align:center;
+}
+
+.hidden{
+  display:none;
+}
+
+.typing{
+  border-right:2px solid #fff;
+  white-space:nowrap;
+  overflow:hidden;
+}
+
+.footer{
+  text-align:center;
+  margin-top:60px;
+  opacity:0.7;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Opening Popup -->
+<div class="popup" id="popup">
+  <h1 id="typeText" class="typing"></h1>
+  <button onclick="startSite()">Enter ❤️</button>
+</div>
+
+<div class="container" id="mainContent" style="display:none;">
+
+  <div class="section">
+    <h1>Akriti…</h1>
+    <div class="card">
+      This is not just a website…<br><br>
+      This is everything I feel for you… in words.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Why You Are Everything</h2>
+    <div class="card">
+      You are not just someone I love…<br><br>
+      You are the reason love makes sense to me.<br><br>
+      You are my calm, my peace, my safe place.<br><br>
+      I don't just love you… I feel you deeply.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Little Things I Love</h2>
+    <div class="card">
+      I love your smile… even the one you try to hide.<br><br>
+      I love how deeply you feel things.<br><br>
+      I love how you care… even when you pretend you don’t.<br><br>
+      I love every version of you.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>For Your Insecurities</h2>
+    <div class="card">
+      There is nothing about you that needs fixing.<br><br>
+      Not your height.<br>
+      Not your thoughts.<br>
+      Not your fears.<br><br>
+      You are already perfect to me.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>For Your Bad Days</h2>
+    <div class="card" id="badDayText">
+      Click below when you feel sad.
+      <button onclick="showComfort()">Tap here</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>To Your Inner Child — Shia 🌙</h2>
+    <div class="card">
+      Hey Shia…<br><br>
+      You don’t have to be strong anymore.<br><br>
+      You are safe now.<br>
+      You are loved.<br>
+      You matter.<br><br>
+      I'm here… and I'm not going anywhere.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Random Love Button 💌</h2>
+    <div class="card">
+      <p id="randomLine">Click to see something special ❤️</p>
+      <button onclick="newLine()">Show Love</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>My Promise</h2>
+    <div class="card">
+      I promise to stay.<br>
+      I promise to listen.<br>
+      I promise to understand.<br><br>
+      And I promise to love you in a way that feels safe.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Final Message</h2>
+    <div class="card">
+      You are not just someone in my life…<br><br>
+      You are a part of me.<br><br>
+      And you always will be.
+    </div>
+  </div>
+
+  <div class="footer">
+    — Yours, Sujal ❤️
+  </div>
+
+</div>
+
+<script>
+
+// typing effect
+let text = "A small place made only for you… Akriti ❤️";
+let i=0;
+function typing(){
+  if(i<text.length){
+    document.getElementById("typeText").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typing,50);
+  }
+}
+typing();
+
+function startSite(){
+  document.getElementById("popup").classList.add("hidden");
+  document.getElementById("mainContent").style.display="block";
+}
+
+// scroll animation
+let sections = document.querySelectorAll('.section');
+window.addEventListener('scroll',()=>{
+  sections.forEach(sec=>{
+    let top = window.scrollY;
+    let offset = sec.offsetTop - 500;
+    if(top > offset){
+      sec.classList.add('show');
+    }
+  });
+});
+
+// random love lines
+let lines = [
+  "You are my favorite notification.",
+  "I would choose you in every lifetime.",
+  "Even your silence feels like home.",
+  "You make my worst days better.",
+  "You are everything I ever needed."
+];
+
+function newLine(){
+  let random = Math.floor(Math.random()*lines.length);
+  document.getElementById("randomLine").innerText = lines[random];
+}
+
+// comfort message
+function showComfort(){
+  document.getElementById("badDayText").innerHTML = "Even if the whole world feels heavy…<br><br>I’m here for you.<br><br>You are not alone.";
+}
+
+</script>
+
+</body>
+</html>
